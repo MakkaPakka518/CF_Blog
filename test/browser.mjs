@@ -10,14 +10,32 @@ const output = new URL('../.impeccable/review/', import.meta.url);
 mkdirSync(output, { recursive: true });
 const browser = await chromium.launch({ headless: true, ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}), args: ['--no-sandbox'] });
 const errors = [];
+const baseline = locator => locator.evaluate(element => {
+  const marker = document.createElement('span');
+  marker.style.display = 'inline-block'; marker.style.width = marker.style.height = '0';
+  element.prepend(marker); const y = marker.getBoundingClientRect().y; marker.remove(); return y;
+});
 try {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   const page = await context.newPage(); page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error' && message.text().includes('Content Security Policy')) errors.push(message.text()); });
   for (const width of [375, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 }); await page.goto(base);
     await page.waitForFunction(() => !document.querySelector('.theme-toggle').hidden);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.ok(await page.locator('.feature-story a').count());
+    await page.evaluate(() => document.fonts.ready);
+    const guide = await page.locator('.masthead-line').boundingBox();
+    for (const selector of ['.feature-story', '.section-heading', '.article-row']) {
+      const bounds = await page.locator(selector).first().boundingBox();
+      assert.ok(Math.abs(bounds.x - guide.x) < 1 && Math.abs(bounds.width - guide.width) < 1, `${selector} shares the page alignment guides`);
+    }
+    const footerRule = await page.locator('.site-footer').evaluate(el => {
+      const box = el.getBoundingClientRect(), style = getComputedStyle(el, '::before');
+      return { left: box.left + parseFloat(style.left), right: box.right - parseFloat(style.right) };
+    });
+    assert.ok(Math.abs(footerRule.left - guide.x) < 1 && Math.abs(footerRule.right - guide.x - guide.width) < 1, 'Footer and masthead rules align');
+    if (width > 640) assert.ok(Math.abs(await baseline(page.locator('.row-date').first()) - await baseline(page.locator('.row-content h3 a').first())) < 1, 'Dates align with the first title baseline');
     await page.screenshot({ path: new URL(width === 1440 ? 'desktop.png' : `home-${width}.png`, output).pathname, fullPage: true });
     await page.locator('.theme-toggle').click();
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
@@ -49,6 +67,66 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await page.screenshot({ path: new URL('article-mobile.png', output).pathname, fullPage: true });
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const wheel = page.locator('[data-reading-tools]');
+  const toggle = wheel.getByRole('button', { name: '展开阅读工具' });
+  await toggle.focus(); await page.keyboard.press('ArrowDown');
+  await page.waitForFunction(() => document.querySelector('[data-motion-surface]')?.shadowRoot.activeElement?.dataset.action === 'copy');
+  await page.keyboard.press('End');
+  await page.waitForFunction(() => document.querySelector('[data-motion-surface]')?.shadowRoot.activeElement?.dataset.action === 'print');
+  assert.equal(await wheel.getByRole('menuitem', { name: '打印文章' }).evaluate(el => el.getRootNode().activeElement === el), true);
+  await page.keyboard.press('Escape');
+  assert.equal(await toggle.getAttribute('aria-expanded'), 'false');
+  await toggle.click();
+  await wheel.getByRole('menuitem', { name: '复制链接' }).click();
+  await page.waitForFunction(() => document.querySelector('.notice').textContent === '已复制。');
+  assert.equal(await page.evaluate(() => navigator.clipboard.readText()), base + '/posts/a-place-for-notes');
+  for (const width of [320, 375, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await toggle.click();
+    await page.waitForFunction(() => document.querySelector('[data-motion-surface]').shadowRoot.querySelector('.radial-menu-demo').dataset.moving === 'false');
+    for (const button of await wheel.getByRole('menuitem').all()) {
+      const bounds = await button.boundingBox();
+      assert.ok(bounds.width >= 44 && bounds.height >= 44, 'Reading actions retain touch target size');
+      assert.ok(bounds.x >= 0 && bounds.x + bounds.width <= width, 'Open wheel fits the viewport');
+      for (const part of ['.rm-icon', '.rm-label']) {
+        const inner = await button.locator(part).boundingBox();
+        assert.ok(Math.abs(inner.x + inner.width / 2 - bounds.x - bounds.width / 2) < 1, 'Action icons and labels share a horizontal centre');
+      }
+    }
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    await wheel.screenshot({ path: new URL(`reading-tools-${width}.png`, output).pathname });
+    await wheel.getByRole('menuitem', { name: '切换深色模式' }).click();
+    assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+    await toggle.click();
+    await page.waitForFunction(() => document.querySelector('[data-motion-surface]').shadowRoot.querySelector('.radial-menu-demo').dataset.moving === 'false');
+    await wheel.screenshot({ path: new URL(`reading-tools-dark-${width}.png`, output).pathname });
+    await wheel.getByRole('menuitem', { name: '切换浅色模式' }).click();
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await toggle.click();
+  assert.equal(await wheel.locator('.radial-menu-demo').getAttribute('data-moving'), 'false');
+  await wheel.getByRole('menuitem', { name: '回到顶部' }).click();
+  await page.waitForFunction(() => document.activeElement === document.querySelector('.article-heading h1'));
+  assert.ok((await page.locator('.article-heading h1').boundingBox()).y < 150);
+  await page.evaluate(() => { window.print = () => { window.printCalled = true; }; });
+  await toggle.click(); await wheel.getByRole('menuitem', { name: '打印文章' }).click();
+  await page.waitForFunction(() => window.printCalled);
+  await toggle.click(); await wheel.getByRole('menuitem', { name: '文章归档' }).click();
+  await page.waitForURL(base + '/archive');
+  await page.goBack(); await page.waitForSelector('[data-reading-tools]:not([hidden])');
+  await toggle.click(); await wheel.getByRole('menuitem', { name: 'RSS 订阅' }).click();
+  await page.waitForURL(base + '/feed.xml');
+  await page.goBack(); await page.waitForSelector('[data-reading-tools]:not([hidden])');
+  await page.evaluate(() => dispatchEvent(new PageTransitionEvent('pagehide')));
+  assert.equal(await wheel.locator('[data-motion-surface]').count(), 0);
+  await page.evaluate(() => dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
+  assert.equal(await wheel.locator('[data-motion-surface]').count(), 1);
+  await toggle.click(); await page.locator('.article-heading h1').click();
+  assert.equal(await toggle.getAttribute('aria-expanded'), 'false');
+  await page.emulateMedia({ media: 'print' });
+  assert.equal(await wheel.isVisible(), false);
+  await page.emulateMedia({ media: 'screen', reducedMotion: 'no-preference' });
+  await page.setViewportSize({ width: 375, height: 844 });
   await page.locator('.copy-link').click();
   await page.waitForFunction(() => document.querySelector('.notice').textContent === '已复制。');
   await page.evaluate(() => { navigator.clipboard.writeText = async () => { throw new Error('denied'); }; });
@@ -76,6 +154,7 @@ try {
   await page.goto(base + '/admin');
   const slug = 'browser-check-' + Date.now();
   await page.getByRole('link', { name: '写新文章' }).click();
+  assert.ok(Math.abs(await baseline(page.locator('.admin-heading h1')) - await baseline(page.locator('.editor-state'))) < 1, 'Editor title and save state share a baseline');
   await page.getByLabel('标题', { exact: true }).fill('浏览器验收草稿');
   await page.getByLabel('短链接', { exact: true }).fill(slug);
   await page.getByRole('tab', { name: '预览', exact: true }).click();
@@ -151,7 +230,18 @@ try {
   const readable = await noScript.newPage(); await readable.goto(base + '/posts/a-place-for-notes');
   assert.match(await readable.locator('[data-article]').textContent(), /先把问题记下来/);
   assert.equal(await readable.locator('.theme-toggle').isVisible(), false);
+  assert.equal(await readable.locator('[data-reading-tools]').isVisible(), false);
+  await readable.goto(base);
+  assert.equal(await readable.getByRole('link', { name: '阅读全文', exact: true }).isVisible(), true);
+  await readable.getByRole('link', { name: '阅读全文', exact: true }).click();
+  assert.match(readable.url(), /\/posts\//);
   await noScript.close();
+  const touch = await browser.newContext({ hasTouch: true, isMobile: true, viewport: { width: 375, height: 844 } });
+  const touchPage = await touch.newPage(); await touchPage.goto(base + '/posts/a-place-for-notes');
+  await touchPage.getByRole('button', { name: '展开阅读工具' }).tap();
+  await touchPage.getByRole('menuitem', { name: '切换深色模式' }).tap();
+  assert.equal(await touchPage.locator('html').getAttribute('data-theme'), 'dark');
+  await touch.close();
   const empty = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const settings = { title: '个人博客', description: '技术与生活的记录。', author: '', contact_url: '' };
   await empty.route('https://empty.blog.test/**', async route => {

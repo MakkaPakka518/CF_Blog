@@ -1,0 +1,13 @@
+{
+  "url": "https://leibox.pantoria.cn/ai/packages/tactile-push-button/vanilla.json",
+  "source": {
+    "kind": "project-source",
+    "provider": "LeiBox",
+    "implementation": "Original HTML and CSS submitted by 少荃 (Douyin: 宝龙体育优品小铺), adapted for the LeiBox demo.",
+    "designReference": null,
+    "designAuthor": "少荃 (Douyin: 宝龙体育优品小铺)",
+    "license": "Community submission by 少荃 (Douyin: 宝龙体育优品小铺). No separate license was supplied."
+  },
+  "dependencies": [],
+  "usage": "import { mount } from \"./TactilePushButton\";\nconst target = document.querySelector<HTMLElement>(\"#demo\")!;\nconst component = mount(target);\n// When your page or route unmounts:\n// component.destroy();"
+}

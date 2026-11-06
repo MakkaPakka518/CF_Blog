@@ -96,6 +96,7 @@ typography:
 rounded:
   radius-card: "2px"
   radius-pill: "2px"
+  radius-tactile: "0.75rem"
 spacing:
   space-2xs: "4px"
   space-xs: "8px"
@@ -284,11 +285,11 @@ Frontmatter roles describe final rendered roles, not unused foundation defaults.
 | `--reading-width` | `42rem` | Main article column and article-end maximum. |
 | `--control-height` | `44px` | Input/button minimum and square icon-button dimensions. |
 
-At a 1440px viewport, the capped frame has 40px outside margins plus the gutter, placing primary content at x=104px. The footer double rule spans the container border box rather than only its inset content. The masthead remains in document flow.
+At a 1440px viewport, the capped frame has 40px outside margins plus the gutter, placing primary content at x=104px. Masthead, article rows and the footer double rule share those inner alignment guides; the footer rule is inset by `--gutter`. The masthead remains in document flow. Dates align with the first title baseline on multi-column rows. Related-post heading rules span the section width. In the writing interface, table metadata aligns with the article-title baseline, and the editor title shares a baseline with its save state beneath the back link.
 
 The reused spacing steps are in frontmatter; their keys map directly to the `--space-*` properties. Fine spacing serves labels/tags, middle steps serve controls and panels, and larger steps separate index rows and reading sections. `--space-3xl` supplies `html` scroll padding. No viewport-height promotional hero is imposed.
 
-Article rows use `minmax(0, 1fr) minmax(0, 3fr)`. Reading uses `minmax(0, var(--reading-width)) minmax(10rem, 1fr)` with a `--space-2xl` gap. The chapter panel sticks at `--space-xl`, with internal scroll height capped at `calc(100dvh - var(--space-2xl))`. The editor uses `minmax(0, 1fr) minmax(14rem, 19rem)` and a `--space-xl` gap. Search caps at 42rem, settings at 46rem and login at 28rem. Prose code and tables scroll internally on overflow.
+Article rows use `minmax(0, 1fr) minmax(0, 3fr)`. Reading uses `minmax(0, var(--reading-width)) minmax(18rem, 1fr)` with a `--space-2xl` gap, preserving the reading tools' touch targets and labels on narrower desktops. The reading sidebar sticks at `--space-xl`, with internal scroll height capped at `calc(100dvh - var(--space-2xl))`; its chapter index has a `min(50dvh, 28rem)` cap and the reading tools sit below it. The editor uses `minmax(0, 1fr) minmax(14rem, 19rem)` and a `--space-xl` gap. Search caps at 42rem, settings at 46rem and login at 28rem. Prose code and tables scroll internally on overflow.
 
 ### Responsive changes
 
@@ -320,6 +321,14 @@ The form language is nearly square. Both `--radius-card` and the historically na
 `--rule-hair: 1px` supplies row/table borders, fields and quiet dividers. `--rule-double: 4px` supplies the double-line masthead, major index divider, article-end and colophon. Blockquotes have a hairline indigo leading border. Tags are plain text links, not pills. Icons are outlined SVGs from `public/assets/icons.svg`, normally 20×20px with a 1.5-unit stroke; the moving bookmark is 16×16px. Native disclosure markers remain on cover settings.
 
 ## Components
+
+### LeiBox reading interactions
+
+Public article pages additionally mount the retained Vanilla **Soft Action Wheel** package through `src/reading-tools.js`. Its six labelled actions perform link copying, heading focus/scroll, archive navigation, appearance switching, RSS navigation and printing. The closed control reads “工具”; the expanded control reads “收起”. The component uses the blog's paper, ink, rule and focus tokens, Chinese labels and shared outlined SVG icons rather than demo actions. Desktop places it below the chapter index in a scrollable sticky sidebar; narrow layouts place the index before the prose and the tools after it. The entire wheel is hidden in print and without JavaScript. Source attribution is recorded in `vendor/leibox/README.md`.
+
+The original wheel uses a 960px design coordinate system, scaled to a 288–320px surface at the supported 320px-and-up viewport sizes. Its 40px source labels therefore render at 12–13.33px; action circles render at 60–66.67px. Each icon and label shares its button's horizontal centre. The tactile controls use the documented `radius-tactile` geometry.
+
+The leading article's “阅读全文” link and the article-end “复制文章链接” button use **Tactile Push Button**'s submitted nested surface structure and CSS. They are small rounded controls with restrained paper-tone surface shading, solid ink text and the existing focus ring; the original large silver demo and gradient lettering are not used. Press feedback affects the inner surface, not the hit target. Reduced motion removes transitions and press scaling; no-JavaScript navigation remains native. These two component surfaces are exceptions to the original flat-control treatment below; the article rows and reading typography retain their existing roles.
 
 ### Publication navigation and colophon
 

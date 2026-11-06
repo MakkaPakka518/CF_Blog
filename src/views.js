@@ -7,6 +7,7 @@ const csrfField = session => `<input type="hidden" name="csrf" value="${e(sessio
 const field = (name, label, value = '', options = '') => `<label class="field"><span>${label}</span><input name="${name}" value="${e(value)}" ${options}></label>`;
 const date = value => value ? `<time datetime="${e(isoDate(value))}">${e(formatDate(value))}</time>` : '<span>未发布</span>';
 const metadata = post => `<div class="post-meta">${date(post.published_at)}${post.category ? `<a href="/archive?category=${encodeURIComponent(post.category)}">${e(post.category)}</a>` : ''}</div>`;
+const tactileLabel = label => `<span class="button-outer"><span class="button-inner"><span>${label}</span></span></span>`;
 
 function navigation(path, admin) {
   const links = admin ? [['/admin', '文章'], ['/admin/posts/new', '写文章'], ['/admin/settings', '站点设置'], ['/', '查看博客']] : [['/', '文章'], ['/archive', '归档'], ['/about', '关于']];
@@ -48,7 +49,7 @@ function articleRow(post) {
 export function home(result, settings, url) {
   const [lead, ...rest] = result.posts;
   return `<div class="container"><section class="hero"><div class="site-intro"><h1>${e(settings.description || '技术与生活的记录。')}</h1><div class="intro-links"><a href="/archive">浏览归档</a><a href="/feed.xml">${icon('rss')}订阅更新</a></div></div>
-  ${lead ? `<article class="feature-story"><div class="feature-copy"><h2><a href="${postPath(lead)}">${e(lead.title)}</a></h2>${metadata(lead)}${lead.excerpt ? `<p class="feature-excerpt">${e(lead.excerpt)}</p>` : ''}<a class="reading-link" href="${postPath(lead)}">阅读全文</a></div>${lead.cover_url ? `<figure class="feature-cover"><img src="${e(lead.cover_url)}" alt="${e(lead.cover_alt)}" width="1200" height="800" fetchpriority="high"></figure>` : ''}</article></section>
+  ${lead ? `<article class="feature-story"><div class="feature-copy"><h2><a href="${postPath(lead)}">${e(lead.title)}</a></h2>${metadata(lead)}${lead.excerpt ? `<p class="feature-excerpt">${e(lead.excerpt)}</p>` : ''}<a class="reading-link tactile-button" href="${postPath(lead)}">${tactileLabel('阅读全文')}</a></div>${lead.cover_url ? `<figure class="feature-cover"><img src="${e(lead.cover_url)}" alt="${e(lead.cover_alt)}" width="1200" height="800" fetchpriority="high"></figure>` : ''}</article></section>
     <section class="article-index"><div class="section-heading"><h2>文章索引</h2><a href="/archive">全部 ${result.total} 篇</a></div>${rest.length ? rest.map(articleRow).join('') : '<p class="quiet-copy">新的文章会继续收录在这里。</p>'}${pagination(result, url)}</section>`
     : `<section class="empty-reading"><h2>第一篇文章，还在路上。</h2><p>这里将收录技术笔记与生活记录。</p><a href="/about">关于这个博客</a></section></section>`}</div>`;
 }
@@ -64,10 +65,10 @@ export function archive(result, categories, url, query = '', category = '', tag 
 
 export function postPage(post, related = [], preview = false) {
   const rendered = renderMarkdown(post.content);
-  return `<div class="container article-page">${preview ? '<p class="preview-note" role="status">草稿预览，仅登录后可见。</p>' : ''}<header class="article-heading"><a href="/archive" class="back-link">文章归档</a><h1>${e(post.title)}</h1>${metadata(post)}${post.excerpt ? `<p class="article-deck">${e(post.excerpt)}</p>` : ''}</header>
+  return `<div class="container article-page">${preview ? '<p class="preview-note" role="status">草稿预览，仅登录后可见。</p>' : ''}<header class="article-heading"><a href="/archive" class="back-link">文章归档</a><h1 tabindex="-1">${e(post.title)}</h1>${metadata(post)}${post.excerpt ? `<p class="article-deck">${e(post.excerpt)}</p>` : ''}</header>
   ${post.cover_url ? `<figure class="article-cover"><img src="${e(post.cover_url)}" alt="${e(post.cover_alt)}" width="1200" height="800" fetchpriority="high"></figure>` : ''}
-  <div class="reading-layout"><article class="prose" data-article>${rendered.html}</article>${rendered.headings.length > 1 ? `<aside class="contents-panel"><nav class="contents" aria-label="文章目录"><h2>本文目录</h2><span class="contents-marker" aria-hidden="true">${icon('bookmark')}</span><ol>${rendered.headings.map(item => `<li class="level-${item.level}"><a href="#${encodeURIComponent(item.id)}">${e(item.text)}</a></li>`).join('')}</ol></nav></aside>` : ''}</div>
-  <footer class="article-end"><div class="article-tags">${tagsOf(post).map(tag => `<a href="/archive?tag=${encodeURIComponent(tag)}">${e(tag)}</a>`).join('')}</div><p>更新于 ${e(formatDate(post.updated_at))}</p>${!preview ? `<button class="text-button copy-link" type="button" data-url="${postPath(post)}" hidden>复制文章链接</button>` : ''}</footer>
+  <div class="reading-layout"><article class="prose" data-article>${rendered.html}</article><aside class="reading-sidebar">${rendered.headings.length > 1 ? `<div class="contents-panel"><nav class="contents" aria-label="文章目录"><h2>本文目录</h2><span class="contents-marker" aria-hidden="true">${icon('bookmark')}</span><ol>${rendered.headings.map(item => `<li class="level-${item.level}"><a href="#${encodeURIComponent(item.id)}">${e(item.text)}</a></li>`).join('')}</ol></nav></div>` : ''}${!preview ? '<div class="reading-tools" data-reading-tools hidden></div><script type="module" src="/assets/reading-tools.js"></script>' : ''}</aside></div>
+  <footer class="article-end"><div class="article-tags">${tagsOf(post).map(tag => `<a href="/archive?tag=${encodeURIComponent(tag)}">${e(tag)}</a>`).join('')}</div><p>更新于 ${e(formatDate(post.updated_at))}</p>${!preview ? `<button class="copy-link tactile-button" type="button" data-url="${postPath(post)}" hidden>${tactileLabel('复制文章链接')}</button>` : ''}</footer>
   ${related.length ? `<section class="related-posts"><h2>接着读</h2>${related.map(articleRow).join('')}</section>` : ''}</div>`;
 }
 

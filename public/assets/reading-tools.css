@@ -1,0 +1,25 @@
+/* Blog styling for the LeiBox Soft Action Wheel Shadow DOM. */
+.motion-body, .radial-menu-demo[data-variant=soft] { background: transparent; color: var(--color-ink); font-family: var(--font-body); }
+[data-variant=soft] .rm-action, [data-variant=soft] .rm-toggle {
+  color: var(--color-ink);
+  background: linear-gradient(160deg, var(--color-paper), var(--color-paper-2)) padding-box;
+  border: 3px solid var(--color-rule);
+  box-shadow: 0 12px 24px var(--color-soft-shadow);
+}
+[data-variant=soft] .rm-action:hover, [data-variant=soft] .rm-toggle:hover,
+[data-variant=soft] .rm-action:active, [data-variant=soft] .rm-toggle:active {
+  background: var(--color-paper-2); color: var(--color-accent);
+  border-color: var(--color-accent); box-shadow: 0 6px 12px var(--color-soft-shadow);
+}
+[data-variant=soft] .rm-action:focus-visible, [data-variant=soft] .rm-toggle:focus-visible { outline: 6px solid var(--color-focus); outline-offset: 10px; }
+[data-variant=soft] .rm-action { left: 380px; top: 380px; width: 200px; height: 200px; }
+[data-variant=soft] .rm-toggle { left: 375px; top: 375px; width: 210px; height: 210px; }
+[data-variant=soft] .rm-icon { width: 72px; height: 72px; margin-top: -35px; fill: none; }
+.rm-plus { margin-top: -35px; }
+.rm-plus:before, .rm-plus:after { background: currentColor; }
+.rm-label { position: absolute; top: 116px; left: 0; right: 0; text-align: center; font-size: 40px; font-weight: 500; line-height: 1.3; pointer-events: none; }
+.rm-toggle .rm-label { top: 130px; }
+@media (forced-colors: active) {
+  [data-variant=soft] .rm-action, [data-variant=soft] .rm-toggle { background: Canvas; color: ButtonText; border-color: ButtonText; }
+  .rm-plus:before, .rm-plus:after { background: ButtonText; }
+}

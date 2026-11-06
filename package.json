@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:components": "node scripts/build-components.mjs",
+    "prebuild:only": "npm run build:components",
     "build:only": "node scripts/build-only.mjs",
     "dev": "wrangler dev --local --port 8787",
     "db:local": "wrangler d1 migrations apply DB --local",

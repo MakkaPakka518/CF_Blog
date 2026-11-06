@@ -1,0 +1,13 @@
+{
+  "url": "https://leibox.pantoria.cn/ai/packages/soft-action-wheel/vanilla.json",
+  "source": {
+    "kind": "project-source",
+    "provider": "LeiBox",
+    "implementation": "Variant of the local native radial-menu core, with independently reconstructed SVGs and light-surface styling; no original author source obtained.",
+    "designReference": "https://x.com/withAnimationUI/status/2110643020890849625/video/1",
+    "designAuthor": "withAnimation",
+    "license": "Original design license not supplied or independently verified; the reference video is retained only for internal comparison."
+  },
+  "dependencies": [],
+  "usage": "import { mount } from \"./SoftActionWheel\";\nconst target = document.querySelector<HTMLElement>(\"#demo\")!;\nconst component = mount(target);\n// When your page or route unmounts:\n// component.destroy();"
+}
