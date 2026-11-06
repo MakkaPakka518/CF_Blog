@@ -2,8 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
-import worker from '../src/worker.js';
+import sourceWorker from '../src/worker.js';
 import { renderMarkdown, validatePost } from '../src/content.js';
+
+const worker = process.env.BLOG_TEST_SINGLE_FILE === '1' ? (await import('../only/worker.js')).default : sourceWorker;
 
 class D1 {
   constructor() { this.db = new DatabaseSync(':memory:'); this.db.exec(readFileSync(new URL('../migrations/0001_blog.sql', import.meta.url), 'utf8')); }
