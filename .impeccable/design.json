@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T19:06:48Z",
+  "title": "Design System: Worker D1 Blog — Vellum Indigo",
+  "extensions": {
+    "colorMeta": {
+      "color-paper": { "role": "neutral", "displayName": "Cool Vellum", "tonalRamp": ["oklch(15% 0.003 240)", "oklch(27% 0.006 240)", "oklch(39% 0.009 240)", "oklch(51% 0.012 240)", "oklch(63% 0.012 240)", "oklch(75% 0.010 240)", "oklch(85% 0.007 240)", "oklch(95% 0.003 240)"] },
+      "color-paper-2": { "role": "neutral", "displayName": "Inset Vellum", "tonalRamp": ["oklch(15% 0.004 245)", "oklch(27% 0.009 245)", "oklch(39% 0.014 245)", "oklch(51% 0.018 245)", "oklch(63% 0.018 245)", "oklch(75% 0.014 245)", "oklch(85% 0.009 245)", "oklch(95% 0.004 245)"] },
+      "color-ink": { "role": "neutral", "displayName": "Blue-black Ink", "tonalRamp": ["oklch(15% 0.008 265)", "oklch(27% 0.017 265)", "oklch(39% 0.026 265)", "oklch(51% 0.035 265)", "oklch(63% 0.035 265)", "oklch(75% 0.026 265)", "oklch(85% 0.017 265)", "oklch(95% 0.008 265)"] },
+      "color-ink-2": { "role": "neutral", "displayName": "Supporting Ink", "tonalRamp": ["oklch(15% 0.007 265)", "oklch(27% 0.014 265)", "oklch(39% 0.021 265)", "oklch(51% 0.028 265)", "oklch(63% 0.028 265)", "oklch(75% 0.021 265)", "oklch(85% 0.014 265)", "oklch(95% 0.007 265)"] },
+      "color-muted": { "role": "neutral", "displayName": "Marginal Ink", "tonalRamp": ["oklch(15% 0.006 265)", "oklch(27% 0.013 265)", "oklch(39% 0.019 265)", "oklch(51% 0.026 265)", "oklch(63% 0.026 265)", "oklch(75% 0.019 265)", "oklch(85% 0.013 265)", "oklch(95% 0.006 265)"] },
+      "color-rule": { "role": "neutral", "displayName": "Ledger Rule", "tonalRamp": ["oklch(15% 0.005 250)", "oklch(27% 0.010 250)", "oklch(39% 0.015 250)", "oklch(51% 0.020 250)", "oklch(63% 0.020 250)", "oklch(75% 0.015 250)", "oklch(85% 0.010 250)", "oklch(95% 0.005 250)"] },
+      "color-accent": { "role": "primary", "displayName": "Publication Indigo", "tonalRamp": ["oklch(15% 0.030 268)", "oklch(27% 0.080 268)", "oklch(39% 0.130 268)", "oklch(51% 0.170 268)", "oklch(63% 0.170 268)", "oklch(75% 0.120 268)", "oklch(85% 0.060 268)", "oklch(95% 0.015 268)"] },
+      "color-accent-deep": { "role": "primary", "displayName": "Pressed-print Indigo", "tonalRamp": ["oklch(15% 0.030 268)", "oklch(27% 0.070 268)", "oklch(39% 0.110 268)", "oklch(51% 0.150 268)", "oklch(63% 0.150 268)", "oklch(75% 0.110 268)", "oklch(85% 0.060 268)", "oklch(95% 0.015 268)"] },
+      "color-accent-ink": { "role": "neutral", "displayName": "Button Reverse Ink", "tonalRamp": ["oklch(15% 0.004 82)", "oklch(27% 0.010 82)", "oklch(39% 0.015 82)", "oklch(51% 0.020 82)", "oklch(63% 0.020 82)", "oklch(75% 0.015 82)", "oklch(85% 0.010 82)", "oklch(95% 0.004 82)"] },
+      "color-focus": { "role": "primary", "displayName": "Keyboard Indigo", "tonalRamp": ["oklch(15% 0.030 268)", "oklch(27% 0.080 268)", "oklch(39% 0.140 268)", "oklch(51% 0.180 268)", "oklch(63% 0.180 268)", "oklch(75% 0.120 268)", "oklch(85% 0.060 268)", "oklch(95% 0.015 268)"] },
+      "color-field": { "role": "primary", "displayName": "Leading Article Field", "tonalRamp": ["oklch(15% 0.030 268)", "oklch(27% 0.080 268)", "oklch(39% 0.130 268)", "oklch(51% 0.170 268)", "oklch(63% 0.170 268)", "oklch(75% 0.120 268)", "oklch(85% 0.060 268)", "oklch(95% 0.015 268)"] },
+      "color-field-ink": { "role": "neutral", "displayName": "Field Reverse Ink", "tonalRamp": ["oklch(15% 0.003 245)", "oklch(27% 0.006 245)", "oklch(39% 0.009 245)", "oklch(51% 0.012 245)", "oklch(63% 0.012 245)", "oklch(75% 0.009 245)", "oklch(85% 0.006 245)", "oklch(95% 0.003 245)"] },
+      "color-field-muted": { "role": "neutral", "displayName": "Field Metadata Ink", "tonalRamp": ["oklch(15% 0.008 252)", "oklch(27% 0.017 252)", "oklch(39% 0.026 252)", "oklch(51% 0.035 252)", "oklch(63% 0.035 252)", "oklch(75% 0.026 252)", "oklch(85% 0.017 252)", "oklch(95% 0.008 252)"] },
+      "color-error": { "role": "error", "displayName": "Validation Red", "tonalRamp": ["oklch(15% 0.025 27)", "oklch(27% 0.065 27)", "oklch(39% 0.125 27)", "oklch(51% 0.190 27)", "oklch(63% 0.180 27)", "oklch(75% 0.110 27)", "oklch(85% 0.055 27)", "oklch(95% 0.015 27)"] },
+      "color-success": { "role": "success", "displayName": "Published Green", "tonalRamp": ["oklch(15% 0.020 150)", "oklch(27% 0.045 150)", "oklch(39% 0.080 150)", "oklch(51% 0.120 150)", "oklch(63% 0.120 150)", "oklch(75% 0.090 150)", "oklch(85% 0.050 150)", "oklch(95% 0.012 150)"] },
+      "color-soft-shadow": { "role": "neutral", "displayName": "Notice Shadow Tint", "tonalRamp": ["oklch(15% 0.006 265 / 0.06)", "oklch(27% 0.012 265 / 0.06)", "oklch(39% 0.019 265 / 0.06)", "oklch(51% 0.025 265 / 0.06)", "oklch(63% 0.025 265 / 0.06)", "oklch(75% 0.019 265 / 0.06)", "oklch(85% 0.012 265 / 0.06)", "oklch(95% 0.006 265 / 0.06)"] },
+      "color-paper-dark": { "role": "neutral", "displayName": "Night Vellum", "tonalRamp": ["oklch(15% 0.004 265)", "oklch(27% 0.009 265)", "oklch(39% 0.014 265)", "oklch(51% 0.018 265)", "oklch(63% 0.018 265)", "oklch(75% 0.014 265)", "oklch(85% 0.009 265)", "oklch(95% 0.004 265)"] },
+      "color-paper-2-dark": { "role": "neutral", "displayName": "Night Inset Vellum", "tonalRamp": ["oklch(15% 0.005 265)", "oklch(27% 0.011 265)", "oklch(39% 0.016 265)", "oklch(51% 0.022 265)", "oklch(63% 0.022 265)", "oklch(75% 0.016 265)", "oklch(85% 0.011 265)", "oklch(95% 0.005 265)"] },
+      "color-ink-dark": { "role": "neutral", "displayName": "Night Reading Ink", "tonalRamp": ["oklch(15% 0.003 240)", "oklch(27% 0.006 240)", "oklch(39% 0.009 240)", "oklch(51% 0.012 240)", "oklch(63% 0.012 240)", "oklch(75% 0.009 240)", "oklch(85% 0.006 240)", "oklch(95% 0.003 240)"] },
+      "color-ink-2-dark": { "role": "neutral", "displayName": "Night Supporting Ink", "tonalRamp": ["oklch(15% 0.005 245)", "oklch(27% 0.010 245)", "oklch(39% 0.015 245)", "oklch(51% 0.020 245)", "oklch(63% 0.020 245)", "oklch(75% 0.015 245)", "oklch(85% 0.010 245)", "oklch(95% 0.005 245)"] },
+      "color-muted-dark": { "role": "neutral", "displayName": "Night Marginal Ink", "tonalRamp": ["oklch(15% 0.005 250)", "oklch(27% 0.010 250)", "oklch(39% 0.015 250)", "oklch(51% 0.020 250)", "oklch(63% 0.020 250)", "oklch(75% 0.015 250)", "oklch(85% 0.010 250)", "oklch(95% 0.005 250)"] },
+      "color-rule-dark": { "role": "neutral", "displayName": "Night Ledger Rule", "tonalRamp": ["oklch(15% 0.005 265)", "oklch(27% 0.011 265)", "oklch(39% 0.016 265)", "oklch(51% 0.022 265)", "oklch(63% 0.022 265)", "oklch(75% 0.016 265)", "oklch(85% 0.011 265)", "oklch(95% 0.005 265)"] },
+      "color-accent-dark": { "role": "primary", "displayName": "Night Publication Indigo", "tonalRamp": ["oklch(15% 0.020 268)", "oklch(27% 0.050 268)", "oklch(39% 0.080 268)", "oklch(51% 0.110 268)", "oklch(63% 0.110 268)", "oklch(75% 0.080 268)", "oklch(85% 0.040 268)", "oklch(95% 0.012 268)"] },
+      "color-accent-deep-dark": { "role": "primary", "displayName": "Night Hover Indigo", "tonalRamp": ["oklch(15% 0.016 268)", "oklch(27% 0.035 268)", "oklch(39% 0.060 268)", "oklch(51% 0.080 268)", "oklch(63% 0.080 268)", "oklch(75% 0.060 268)", "oklch(85% 0.035 268)", "oklch(95% 0.010 268)"] },
+      "color-accent-ink-dark": { "role": "neutral", "displayName": "Night Button Ink", "tonalRamp": ["oklch(15% 0.006 265)", "oklch(27% 0.012 265)", "oklch(39% 0.019 265)", "oklch(51% 0.025 265)", "oklch(63% 0.025 265)", "oklch(75% 0.019 265)", "oklch(85% 0.012 265)", "oklch(95% 0.006 265)"] },
+      "color-focus-dark": { "role": "primary", "displayName": "Night Keyboard Indigo", "tonalRamp": ["oklch(15% 0.025 268)", "oklch(27% 0.055 268)", "oklch(39% 0.090 268)", "oklch(51% 0.120 268)", "oklch(63% 0.120 268)", "oklch(75% 0.090 268)", "oklch(85% 0.045 268)", "oklch(95% 0.012 268)"] },
+      "color-field-dark": { "role": "primary", "displayName": "Night Article Field", "tonalRamp": ["oklch(15% 0.025 268)", "oklch(27% 0.055 268)", "oklch(39% 0.090 268)", "oklch(51% 0.120 268)", "oklch(63% 0.120 268)", "oklch(75% 0.090 268)", "oklch(85% 0.045 268)", "oklch(95% 0.012 268)"] },
+      "color-error-dark": { "role": "error", "displayName": "Night Validation Red", "tonalRamp": ["oklch(15% 0.020 25)", "oklch(27% 0.045 25)", "oklch(39% 0.080 25)", "oklch(51% 0.120 25)", "oklch(63% 0.120 25)", "oklch(75% 0.080 25)", "oklch(85% 0.040 25)", "oklch(95% 0.012 25)"] },
+      "color-success-dark": { "role": "success", "displayName": "Night Published Green", "tonalRamp": ["oklch(15% 0.018 155)", "oklch(27% 0.040 155)", "oklch(39% 0.075 155)", "oklch(51% 0.110 155)", "oklch(63% 0.110 155)", "oklch(75% 0.080 155)", "oklch(85% 0.040 155)", "oklch(95% 0.010 155)"] },
+      "color-soft-shadow-dark": { "role": "neutral", "displayName": "Night Notice Shadow Tint", "tonalRamp": ["oklch(15% 0.002 265 / 0.16)", "oklch(27% 0.005 265 / 0.16)", "oklch(39% 0.007 265 / 0.16)", "oklch(51% 0.010 265 / 0.16)", "oklch(63% 0.010 265 / 0.16)", "oklch(75% 0.007 265 / 0.16)", "oklch(85% 0.005 265 / 0.16)", "oklch(95% 0.002 265 / 0.16)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Publication Introduction", "purpose": "Public introduction; --font-display, --display-weight and --tracking-display. Phone size: 2.35rem." },
+      "headline": { "displayName": "Leading Article", "purpose": "Display title inside the indigo field; phone size: var(--text-2xl)." },
+      "article-title": { "displayName": "Article Opening", "purpose": "Public article title, 24ch maximum; phone size: 2.2rem." },
+      "section": { "displayName": "Index Section", "purpose": "--text-2xl display section label. Prose H1/H2 use the same size with 1.45 line height." },
+      "title": { "displayName": "Dated Entry", "purpose": "Sans-serif article-row title; --text-xl, zero tracking. Phone size: var(--text-lg)." },
+      "body": { "displayName": "Reading and UI Baseline", "purpose": "--font-body and --text-md; Chinese sans-serif fallback remains distinct from display." },
+      "reading": { "displayName": "Long-form Reading", "purpose": "Article prose within --reading-width; phone changes to --text-md with 1.95 line height." },
+      "lead": { "displayName": "Deck and Excerpt", "purpose": "--text-lead; 1.7 line height on feature excerpt and article deck." },
+      "label": { "displayName": "Field Label", "purpose": "--text-sm at weight 500. Metadata uses 400; primary navigation uses 600." },
+      "button": { "displayName": "Action Label", "purpose": "--font-body and --text-md; compact 1.2 line height." },
+      "code": { "displayName": "Code Block", "purpose": "--font-outlier and --text-sm. Markdown editing instead uses --text-md / 1.9; never use mono for metadata." }
+    },
+    "shadows": [
+      { "name": "--shadow-card", "value": "none", "purpose": "Flat publication surfaces; no article or button lift." },
+      { "name": "notice-shadow", "value": "0 4px 12px var(--color-soft-shadow)", "purpose": "Transient fixed status notice; the color token changes with theme." },
+      { "name": "editor-tab-indicator", "value": "inset 0 -2px var(--color-accent)", "purpose": "Selected editing-tab underline, not elevation." }
+    ],
+    "motion": [
+      { "name": "--dur-micro", "value": "120ms", "purpose": "Link-color and primary-button background transitions." },
+      { "name": "--ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Control-state easing; not the bookmark's spring." },
+      { "name": "contents-spring-stiffness", "value": "220", "purpose": "Native JS unit-mass spring in public/assets/contents.js; selector-level behavior, not a CSS property." },
+      { "name": "contents-spring-damping", "value": "30", "purpose": "Critically damped feel, damping ratio approximately 1.01; retargets with current velocity." },
+      { "name": "contents-max-step", "value": "0.032s", "purpose": "Upper bound on integration delta." },
+      { "name": "contents-rest-displacement", "value": "0.1px", "purpose": "Snap to target when displacement and velocity are both below their rest thresholds." },
+      { "name": "contents-rest-velocity", "value": "0.2px/s", "purpose": "Velocity threshold for stopping animation frames." },
+      { "name": "reduced-motion-duration", "value": "0.01ms", "purpose": "Base CSS transition/animation reduction; bookmark snaps, scroll behavior is auto, iteration count is one." },
+      { "name": "notice-duration", "value": "3200ms", "purpose": "Shared polite status notice lifetime in app.js; not a decorative animation." }
+    ],
+    "breakpoints": [
+      { "name": "max-60rem", "value": "60rem" },
+      { "name": "max-40rem", "value": "40rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Explicit primary action; 44px minimum, inverse ink and near-square corners.",
+      "html": "<button type=\"button\" class=\"ds-primary\">发布文章</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-xs);min-height:var(--control-height);padding:var(--space-sm) var(--space-lg);border:var(--rule-hair) solid var(--color-accent);border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-accent-ink);font-family:var(--font-body);font-size:var(--text-md);font-weight:500;line-height:1.2;white-space:nowrap;cursor:pointer;transition:background-color var(--dur-micro) var(--ease-out)}.ds-primary:hover{background:var(--color-accent-deep);border-color:var(--color-accent-deep);color:var(--color-accent-ink)}.ds-primary:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-primary:enabled:active{opacity:.8}.ds-primary:disabled{opacity:.55;cursor:not-allowed}.ds-primary[aria-busy=true]{cursor:progress}@media(prefers-reduced-motion:reduce){.ds-primary{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Secondary action; muted border, transparent ground and paper-2 hover.",
+      "html": "<button type=\"button\" class=\"ds-quiet\">保存草稿</button>",
+      "css": ".ds-quiet{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-xs);min-height:var(--control-height);padding:var(--space-sm) var(--space-lg);border:var(--rule-hair) solid var(--color-muted);border-radius:var(--radius-pill);background:var(--color-clear);color:var(--color-ink);font-family:var(--font-body);font-size:var(--text-md);font-weight:500;line-height:1.2;white-space:nowrap;cursor:pointer;transition:background-color var(--dur-micro) var(--ease-out)}.ds-quiet:hover{background:var(--color-paper-2);color:var(--color-ink);border-color:var(--color-muted)}.ds-quiet:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-quiet:enabled:active{opacity:.8}.ds-quiet:disabled{opacity:.55;cursor:not-allowed}.ds-quiet[aria-busy=true]{cursor:progress}@media(prefers-reduced-motion:reduce){.ds-quiet{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Text Action",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Underlined lightweight action used for copying, recovery and row operations.",
+      "html": "<button type=\"button\" class=\"ds-text-action\">复制文章链接</button>",
+      "css": ".ds-text-action{border:0;padding:var(--space-xs) 0;background:var(--color-clear);color:var(--color-ink-2);font-family:var(--font-body);font-size:var(--text-sm);line-height:1.55;text-decoration:underline;text-underline-offset:.2em;white-space:nowrap;cursor:pointer}.ds-text-action:hover{color:var(--color-accent)}.ds-text-action:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-text-action:enabled:active{opacity:.8}.ds-text-action:disabled{opacity:.55;cursor:not-allowed}"
+    },
+    {
+      "name": "Icon Control",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Theme-control appearance with a named 44px target and inline source SVG.",
+      "html": "<button type=\"button\" class=\"ds-icon-control\" aria-label=\"切换深色模式\" title=\"切换深色模式\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z\"/></svg></button>",
+      "css": ".ds-icon-control{width:var(--control-height);height:var(--control-height);display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--color-clear);color:var(--color-ink);border-radius:var(--radius-pill);cursor:pointer}.ds-icon-control:hover{color:var(--color-accent);background:var(--color-paper-2)}.ds-icon-control:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-icon-control:enabled:active{opacity:.8}.ds-icon-control:disabled{opacity:.55;cursor:not-allowed}"
+    },
+    {
+      "name": "Labelled Field and Adjacent Error",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Native field with an associated, field-local error. Runtime panel reveal and focus are documented in DESIGN.md.",
+      "html": "<label class=\"ds-field\"><span id=\"ds-slug-label\">短链接</span><input class=\"ds-input\" name=\"slug\" value=\"示例/地址\" maxlength=\"120\" aria-labelledby=\"ds-slug-label\" aria-invalid=\"true\" aria-describedby=\"ds-slug-error\"><p class=\"ds-field-error\" id=\"ds-slug-error\" role=\"alert\">短链接只支持文字、数字和连字符。</p></label>",
+      "css": ".ds-field{display:grid;gap:var(--space-xs);min-width:0;font-family:var(--font-body);color:var(--color-ink);line-height:1.55}.ds-field>span{font-size:var(--text-sm);font-weight:500}.ds-input{min-width:0;min-height:var(--control-height);border:var(--rule-hair) solid var(--color-muted);border-radius:var(--radius-card);background:var(--color-paper);color:var(--color-ink);padding:var(--space-sm) var(--space-md);font-family:var(--font-body);font-size:var(--text-md);line-height:1.55;caret-color:var(--color-accent)}.ds-input::placeholder{color:var(--color-muted);opacity:1}.ds-input[aria-invalid=true]{border-color:var(--color-error)}.ds-input:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-field-error{margin:0;font-size:var(--text-sm);line-height:1.6;color:var(--color-error)}"
+    },
+    {
+      "name": "Publication Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Desktop text navigation with current-page underline; native mobile navigation is documented in DESIGN.md.",
+      "html": "<nav class=\"ds-navigation\" aria-label=\"主导航\"><a href=\"/\" aria-current=\"page\">文章</a><a href=\"/archive\">归档</a><a href=\"/about\">关于</a></nav>",
+      "css": ".ds-navigation{display:flex;align-items:center;gap:var(--space-lg);font-family:var(--font-body);color:var(--color-ink);line-height:1.55}.ds-navigation a{font-size:var(--text-sm);font-weight:600;text-decoration:none;white-space:nowrap;padding-block:var(--space-sm);color:inherit;transition:color var(--dur-micro) var(--ease-out)}.ds-navigation [aria-current=page]{text-decoration:underline;text-decoration-color:var(--color-accent);text-decoration-thickness:1px;text-underline-offset:.5em}.ds-navigation a:hover{color:var(--color-accent);text-decoration-color:currentColor}.ds-navigation a:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-navigation a:active{opacity:.8}@media(prefers-reduced-motion:reduce){.ds-navigation a{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Text Taxonomy",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Unboxed category/tag links; the chip kind is a panel classification, not pill geometry.",
+      "html": "<div class=\"ds-tags\"><a href=\"/archive?category=技术\">技术</a><a href=\"/archive?tag=Web\">Web</a></div>",
+      "css": ".ds-tags{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-block-start:var(--space-md);font-family:var(--font-body);font-size:var(--text-sm);line-height:1.55;color:var(--color-muted)}.ds-tags a{color:inherit;text-decoration:none;transition:color var(--dur-micro) var(--ease-out)}.ds-tags a:hover{color:var(--color-accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em}.ds-tags a:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-tags a:active{opacity:.8}@media(prefers-reduced-motion:reduce){.ds-tags a{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Leading Article Field",
+      "kind": "card",
+      "refersTo": "feature-story",
+      "description": "Flat, square publication field. Sample copy is explicitly local demonstration material.",
+      "html": "<article class=\"ds-feature\"><h2><a href=\"/archive\">本地演示文章</a></h2><p class=\"ds-feature-meta\">本地演示内容，不代表作者的真实文章。</p><p class=\"ds-feature-excerpt\">这里展示摘要的排版与阅读层级。</p><a class=\"ds-reading-link\" href=\"/archive\">阅读全文</a></article>",
+      "css": ".ds-feature{--color-focus:var(--color-field-ink);padding:var(--space-lg);background:var(--color-field);color:var(--color-field-ink);font-family:var(--font-body);line-height:1.55}.ds-feature h2{margin:0;font-family:var(--font-display);font-size:clamp(1.85rem,3.1vw,2.75rem);font-weight:var(--display-weight);letter-spacing:var(--tracking-display);line-height:1.28;max-width:36ch;text-wrap:balance;overflow-wrap:break-word}.ds-feature a{color:inherit;text-decoration-color:currentColor;text-decoration-thickness:1px;text-underline-offset:.16em;transition:color var(--dur-micro) var(--ease-out)}.ds-feature h2 a{text-decoration:none}.ds-feature a:hover{color:var(--color-field-ink);text-decoration:underline}.ds-feature a:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-feature a:active{opacity:.8}.ds-feature-meta{margin:var(--space-lg) 0 0;font-size:var(--text-sm);color:var(--color-field-muted);font-variant-numeric:tabular-nums}.ds-feature-excerpt{margin:var(--space-lg) 0 0;max-width:62ch;font-size:var(--text-lead);line-height:1.7}.ds-reading-link{display:inline-block;margin-block-start:var(--space-lg);font-weight:600}@media(max-width:40rem){.ds-feature h2{font-size:var(--text-2xl)}.ds-feature-excerpt{font-size:var(--text-md)}}@media(prefers-reduced-motion:reduce){.ds-feature a{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Dated Article Row",
+      "kind": "custom",
+      "refersTo": "article-row",
+      "description": "Date/content grid that stacks on phones; local demonstration date and title are not owner material.",
+      "html": "<article class=\"ds-article-row\"><div class=\"ds-row-date\"><time datetime=\"2026-11-05\">2026年11月5日</time></div><div class=\"ds-row-content\"><h3><a href=\"/archive\">本地演示文章：阅读与记录</a></h3><p>本地演示内容，不代表作者的真实文章。</p><div class=\"ds-row-tags\"><a href=\"/archive?category=生活\">生活</a></div></div></article>",
+      "css": ".ds-article-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:var(--gap-columns);padding-block:var(--space-xl);border-bottom:var(--rule-hair) solid var(--color-rule);font-family:var(--font-body);font-size:var(--text-md);line-height:1.55;color:var(--color-ink)}.ds-row-date{color:var(--color-muted);font-size:var(--text-sm);font-variant-numeric:tabular-nums;padding-block-start:var(--space-2xs)}.ds-row-content{min-width:0}.ds-row-content h3{margin:0;max-width:40ch;font-family:var(--font-body);font-size:var(--text-xl);font-weight:600;line-height:1.5;letter-spacing:0;overflow-wrap:break-word;text-wrap:balance}.ds-row-content a{color:inherit;text-decoration:none;transition:color var(--dur-micro) var(--ease-out)}.ds-row-content a:hover{color:var(--color-accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em}.ds-row-content a:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-row-content a:active{opacity:.8}.ds-row-content p{margin:var(--space-sm) 0 0;line-height:1.8;color:var(--color-ink-2);max-width:65ch}.ds-row-tags{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-block-start:var(--space-md);font-size:var(--text-sm);color:var(--color-muted)}@media(max-width:40rem){.ds-article-row{grid-template-columns:minmax(0,1fr);gap:var(--space-sm);padding-block:var(--space-lg)}.ds-row-content h3{font-size:var(--text-lg)}}@media(prefers-reduced-motion:reduce){.ds-row-content a{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Marginal Chapter Bookmark",
+      "kind": "custom",
+      "refersTo": "contents-bookmark",
+      "description": "Selected-state specimen of the LeiBox-adapted chapter index. Runtime spring, visibility lifecycle and keyboard behavior are documented in DESIGN.md; this HTML/CSS specimen does not simulate tracking.",
+      "html": "<nav class=\"ds-contents\" aria-label=\"文章目录\"><h2>本文目录</h2><ol><li class=\"ds-selected-section\"><span class=\"ds-bookmark\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linejoin=\"round\"><path d=\"M6 3h12v18l-6-4-6 4V3Z\"/></svg></span><a href=\"#section-example\" aria-current=\"location\">示例章节</a></li><li class=\"ds-level-3\"><a href=\"#subsection-example\">示例小节</a></li></ol></nav>",
+      "css": ".ds-contents{position:relative;max-height:calc(100dvh - var(--space-2xl));overflow-y:auto;padding-inline:var(--space-lg) var(--space-sm);font-family:var(--font-body);color:var(--color-ink)}.ds-contents h2{margin:0 0 var(--space-lg);font-family:var(--font-body);font-size:var(--text-sm);font-weight:600;line-height:1.5;letter-spacing:0}.ds-contents ol{list-style:none;padding:0;margin:0}.ds-contents li{margin-block-end:var(--space-xs)}.ds-contents a{display:block;font-size:var(--text-sm);color:var(--color-muted);line-height:1.6;padding-block:var(--space-xs);text-decoration:none;transition:color var(--dur-micro) var(--ease-out)}.ds-contents a[aria-current=location],.ds-contents a:hover{color:var(--color-accent)}.ds-contents a:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}.ds-contents a:active{opacity:.8}.ds-level-3{padding-inline-start:var(--space-md)}.ds-selected-section{position:relative}.ds-bookmark{position:absolute;left:calc(-1 * var(--space-lg));top:calc(50% - 8px);width:16px;height:16px;color:var(--color-accent);pointer-events:none}@media(max-width:60rem){.ds-contents{max-height:16rem;border-inline-start:var(--rule-hair) solid var(--color-rule)}}@media(prefers-reduced-motion:reduce){.ds-contents a{transition-duration:.01ms}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Vellum Indigo Reading Index",
+    "overview": "A cool-paper publication frame pairs ink-blue fields with measured rules and generous reading margins. The independent-bookshop character comes from typography, dated writing and a marginal bookmark. It accommodates technical notes and personal essays without assigning a fictional identity to the owner.\n\nPublic pages prioritize comprehension; the private writing workspace uses the same materials at a denser, task-oriented scale. Display lettering frames the publication while sans-serif controls and native Markdown editing keep work direct. Motion reports reading position or a control state; the page has no decorative ambient animation.",
+    "keyCharacteristics": [
+      "Cool paper, dark ink and one indigo accent family in light and dark appearances.",
+      "Chinese serif display, Latin blackletter display, sans-serif reading and controls, code-only monospace including Markdown source.",
+      "Flat publication surfaces, hairline separators and double-rule framing.",
+      "Dated article rows, a leading article field and a section-following marginal bookmark.",
+      "Editable identity, clearly disclosed local examples and truthful empty states."
+    ],
+    "rules": [
+      { "name": "The Field Contrast Rule", "body": "Keep field text, field metadata and field focus on their dedicated inverse tokens; ordinary muted ink does not belong on the indigo leading article.", "section": "colors" },
+      { "name": "The Two Reading Voices Rule", "body": "Use display type to frame public writing and sans-serif to read, scan and operate; reserve monospace for code and Markdown source.", "section": "typography" },
+      { "name": "The Flat Publication Rule", "body": "Separate reading surfaces with tone and rules; reserve the floating shadow for transient notices.", "section": "elevation" },
+      { "name": "The Explicit Publication Rule", "body": "Enter and the first save action preserve the current publication status; only the explicit publication action publishes or withdraws a post.", "section": "components" }
+    ],
+    "dos": [
+      "Do preserve cool-paper/ink roles across themes and use dedicated inverse tokens on the indigo article field.",
+      "Do use the shared frame, spacing steps and nearly square controls; let full article titles wrap on phones.",
+      "Do keep display type in the publication frame and sans-serif in reading, metadata and administration.",
+      "Do retain real anchors, native forms, visible focus and field-associated feedback with panel reveal.",
+      "Do preserve publication status on Enter and report only the server-confirmed save result.",
+      "Do label local demonstration content and let missing owner material produce honest empty states."
+    ],
+    "donts": [
+      "Don't treat `个人博客`, fixture titles, sample dates or browser-check text as confirmed owner identity or history.",
+      "Don't replace the article index with repeated raised cards or pad the opening into a promotional full-screen hero.",
+      "Don't turn the `radius-pill` token into capsule geometry or use monospace for dates and navigation.",
+      "Don't add decorative ambient animation; the bookmark moves only to explain reading position.",
+      "Don't hide errors in the other editing panel or change publication state through an implicit save.",
+      "Don't infer imagery, texture, crop treatment or additional components from unused foundation hooks."
+    ]
+  }
+}

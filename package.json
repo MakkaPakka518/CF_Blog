@@ -1,0 +1,23 @@
+{
+  "name": "worker-d1-personal-blog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --port 8787",
+    "db:local": "wrangler d1 migrations apply DB --local",
+    "db:remote": "wrangler d1 migrations apply DB --remote",
+    "demo": "wrangler d1 execute DB --local --file test/demo.sql",
+    "test": "node --test test/*.test.mjs",
+    "check": "node --check src/worker.js && wrangler deploy --dry-run",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0",
+    "puppeteer-core": "^25.16.0",
+    "wrangler": "^4.156.1"
+  }
+}

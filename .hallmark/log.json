@@ -1,0 +1,29 @@
+[
+ {
+  "shape": "Long Document",
+  "theme": "vellum",
+  "axes": "light/blackletter/cool",
+  "hero": "Banner",
+  "nav": "masthead",
+  "footer": "colophon",
+  "imagery": "words; owner material pending",
+  "photos": [],
+  "entry": "src/worker.js",
+  "fingerprint": "index-led publication; indigo article field; dated rows; marginal bookmark",
+  "sections": [
+   "site introduction",
+   "leading article",
+   "dated article index",
+   "colophon"
+  ],
+  "signature": "marginal chapter bookmark and ink-blue lead article",
+  "waived": [
+   "49b",
+   "79"
+  ],
+  "prompt": "Worker + D1 mixed-content personal blog, implementation and design delegated",
+  "review": "hero fixes resolved; finish material fixes resolved; documented",
+  "date": "2026-11-06",
+  "mode": "build"
+ }
+]

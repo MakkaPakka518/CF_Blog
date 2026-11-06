@@ -1,0 +1,12 @@
+node_modules/
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
+test-results/
+.hallmark/render/
+.hallmark/shots/
+.hallmark/salt
+.impeccable/review/
+dist/

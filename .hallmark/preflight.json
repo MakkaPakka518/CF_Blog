@@ -1,0 +1,13 @@
+{
+  "scanned": "2026-11-07",
+  "findings": {
+    "project": "New personal-blog application. The workspace root package.json belongs to an unrelated widget project.",
+    "framework": "Worker-rendered HTML and native browser JavaScript; Cloudflare D1.",
+    "fonts": "No incumbent blog typography.",
+    "palette": "No incumbent blog palette.",
+    "motion": "No incumbent blog motion system.",
+    "assets": "Owner intends to supply name and material; none supplied yet."
+  },
+  "preserve": ["Worker + D1 platform", "Mixed technical and personal content", "Owner-supplied identity and material when received"],
+  "introduce": ["Reading and writing interfaces", "A coherent visual system", "Accessible responsive controls"]
+}
