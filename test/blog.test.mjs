@@ -64,6 +64,20 @@ test('session cookies, origin checks and CSRF protect publishing; logout revokes
   assert.equal((await f.request('/admin')).status, 303);
 });
 
+test('a configured short password is recognized; only missing configuration reports missing', async t => {
+  const f = fixture(t);
+  f.env.ADMIN_PASSWORD = 'my-pass';
+  assert.equal((await f.request('/admin/login', { password: 'my-pass' })).status, 200);
+  assert.equal((await f.request('/admin/login', { password: 'wrong' })).status, 401);
+  delete f.env.ADMIN_PASSWORD;
+  const missing = await f.request('/admin/login', { password: 'my-pass' });
+  assert.equal(missing.status, 503);
+  assert.match((await missing.json()).error, /当前运行版本没有读取到 ADMIN_PASSWORD/);
+  f.env.ADMIN_PASSWORD = 123456;
+  const invalid = await f.request('/admin/login', { password: '123456' });
+  assert.match((await invalid.json()).error, /文本或 Secret/);
+});
+
 test('draft, publish, search, archive and feed expose only published writing', async t => {
   const f = fixture(t); await f.login();
   const draft = await (await f.request('/admin/posts/save', { title: 'Private draft', slug: 'private-draft', content: 'Secret Needle', category: 'Hidden', action: 'draft' })).json();

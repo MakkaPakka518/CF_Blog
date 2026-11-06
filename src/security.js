@@ -76,7 +76,9 @@ export function checkCSRF(request, session, body) {
 
 export async function login(request, env, body) {
   sameOrigin(request);
-  if (!env.ADMIN_PASSWORD || env.ADMIN_PASSWORD.length < 16) throw new HttpError(503, '管理口令尚未配置，请先设置 ADMIN_PASSWORD。');
+  if (env.ADMIN_PASSWORD == null || env.ADMIN_PASSWORD === '') throw new HttpError(503, '当前运行版本没有读取到 ADMIN_PASSWORD。请在 Worker 的 Variables and Secrets 中添加运行时变量或 Secret，并保存部署。');
+  if (typeof env.ADMIN_PASSWORD !== 'string') throw new HttpError(503, 'ADMIN_PASSWORD 必须设置为文本或 Secret，不能使用 JSON 类型。');
+  if (env.ADMIN_PASSWORD.length > 512) throw new HttpError(503, 'ADMIN_PASSWORD 超过 512 字符，请缩短后重新部署。');
   const now = Date.now(), address = request.headers.get('cf-connecting-ip') || 'local';
   const attempt = await env.DB.prepare('SELECT failures, reset_at FROM login_attempts WHERE address=?').bind(address).first();
   if (attempt && attempt.reset_at > now && attempt.failures >= 5) throw new HttpError(429, '尝试过于频繁，请在 15 分钟后重试。');

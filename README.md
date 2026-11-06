@@ -24,7 +24,7 @@ npm install
 cp .dev.vars.example .dev.vars
 ```
 
-编辑 `.dev.vars`，将 `ADMIN_PASSWORD` 设置为自己的管理口令，至少 16 个字符。然后运行：
+编辑 `.dev.vars`，将 `ADMIN_PASSWORD` 设置为自己的非空管理口令，建议使用 16 字符以上的强口令。然后运行：
 
 ```sh
 npm run db:local
@@ -92,7 +92,7 @@ INSERT OR IGNORE INTO d1_migrations (name) VALUES ('0001_blog.sql');
 | 位置 | 配置 |
 | --- | --- |
 | **Bindings → Add binding → D1 database** | Variable name 必须为 **`DB`**，选择刚才的 `cf-blog-db` |
-| **Settings → Variables and Secrets** | 新增 **Secret**，名称为 **`ADMIN_PASSWORD`**，值为自己设置的至少 16 字符管理口令 |
+| **Settings → Variables and Secrets** | 新增 **Secret**，名称为 **`ADMIN_PASSWORD`**，值为自己的非空管理口令，建议 16 字符以上 |
 | **Settings → Runtime → Compatibility date** | 使用 `2026-11-01` 或更新的兼容日期 |
 
 保存绑定和 Secret，并按控制台提示部署新版本。`ADMIN_PASSWORD` 是 **Worker 运行时 Secret**，不是 Build 构建变量，不要把真实口令写进公开仓库。
@@ -112,7 +112,7 @@ INSERT OR IGNORE INTO d1_migrations (name) VALUES ('0001_blog.sql');
 
 - **提示“博客数据库尚未配置”**：检查 D1 绑定名是否精确为 `DB`，并确认绑定修改已部署。
 - **提示数据库未初始化 / no such table**：在已绑定的数据库中执行第 1 步的初始化 SQL。
-- **提示“管理口令尚未配置”**：检查运行时 Secret 是否名为 `ADMIN_PASSWORD`，长度是否至少 16 字符。
+- **提示未读取到 `ADMIN_PASSWORD`**：检查运行时变量或 Secret 的名称和值，并确认已保存部署。口令只要求非空，不会因为不足 16 字符而被判定为未配置；建议使用 16 字符以上的强口令。
 - **出现模块导入或 ASSETS 错误**：确认粘贴的是 `only/worker.js` 的完整原始内容。
 - **更新单文件版**：用新版 `only/worker.js` 替换 Worker 代码，保留原来的 D1 绑定和 Secret；只有新增数据库迁移时才执行对应的新 SQL。
 
